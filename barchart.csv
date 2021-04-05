@@ -1,590 +1,81 @@
-"precinct","complainant_ethnicity","count"
-0,"Not Known",19
-0,"Hispanic",2
-1,"Not Known",10
-1,"Asian",18
-1,"Black",71
-1,"Hispanic",18
-1,"Other Race",6
-1,"Refused",1
-1,"Unknown",9
-1,"White",41
-5,"Not Known",7
-5,"Asian",23
-5,"Black",72
-5,"Hispanic",17
-5,"Other Race",4
-5,"Refused",2
-5,"Unknown",5
-5,"White",30
-6,"Not Known",12
-6,"Asian",9
-6,"Black",60
-6,"Hispanic",31
-6,"Other Race",9
-6,"Refused",1
-6,"Unknown",8
-6,"White",45
-7,"Not Known",33
-7,"American Indian",5
-7,"Asian",8
-7,"Black",76
-7,"Hispanic",57
-7,"Other Race",4
-7,"Refused",4
-7,"Unknown",2
-7,"White",32
-9,"Not Known",33
-9,"Asian",1
-9,"Black",66
-9,"Hispanic",86
-9,"Other Race",16
-9,"Refused",5
-9,"Unknown",4
-9,"White",55
-10,"Not Known",23
-10,"Asian",10
-10,"Black",100
-10,"Hispanic",37
-10,"Other Race",1
-10,"Refused",1
-10,"Unknown",13
-10,"White",56
-13,"Not Known",8
-13,"Asian",3
-13,"Black",54
-13,"Hispanic",45
-13,"Other Race",9
-13,"Unknown",1
-13,"White",32
-14,"Not Known",48
-14,"Asian",10
-14,"Black",160
-14,"Hispanic",26
-14,"Other Race",16
-14,"Unknown",9
-14,"White",82
-17,"Not Known",4
-17,"Asian",11
-17,"Black",22
-17,"Hispanic",4
-17,"Other Race",4
-17,"Unknown",2
-17,"White",29
-18,"Not Known",48
-18,"American Indian",2
-18,"Asian",19
-18,"Black",58
-18,"Hispanic",63
-18,"Other Race",13
-18,"Refused",2
-18,"Unknown",6
-18,"White",57
-19,"Not Known",35
-19,"Asian",1
-19,"Black",64
-19,"Hispanic",13
-19,"Refused",1
-19,"Unknown",6
-19,"White",47
-20,"Not Known",34
-20,"Asian",4
-20,"Black",19
-20,"Hispanic",25
-20,"Refused",2
-20,"Unknown",5
-20,"White",23
-22,"Black",6
-22,"Hispanic",1
-22,"Unknown",2
-22,"White",3
-23,"Not Known",73
-23,"American Indian",2
-23,"Black",306
-23,"Hispanic",172
-23,"Other Race",12
-23,"Refused",8
-23,"Unknown",13
-23,"White",24
-24,"Not Known",14
-24,"Black",103
-24,"Hispanic",47
-24,"Unknown",4
-24,"White",37
-25,"Not Known",55
-25,"American Indian",1
-25,"Asian",2
-25,"Black",344
-25,"Hispanic",150
-25,"Other Race",23
-25,"Refused",8
-25,"Unknown",5
-25,"White",26
-26,"Not Known",19
-26,"Asian",3
-26,"Black",83
-26,"Hispanic",39
-26,"Other Race",1
-26,"Unknown",1
-26,"White",12
-28,"Not Known",40
-28,"Black",251
-28,"Hispanic",20
-28,"Other Race",3
-28,"Refused",2
-28,"Unknown",9
-28,"White",19
-30,"Not Known",51
-30,"Asian",1
-30,"Black",152
-30,"Hispanic",84
-30,"Other Race",9
-30,"Unknown",5
-30,"White",26
-32,"Not Known",77
-32,"Asian",5
-32,"Black",508
-32,"Hispanic",53
-32,"Other Race",11
-32,"Unknown",24
-32,"White",6
-33,"Not Known",20
-33,"Black",82
-33,"Hispanic",117
-33,"Refused",16
-33,"Unknown",20
-33,"White",17
-34,"Not Known",53
-34,"Asian",5
-34,"Black",55
-34,"Hispanic",220
-34,"Other Race",8
-34,"Refused",12
-34,"Unknown",20
-34,"White",27
-40,"Not Known",87
-40,"American Indian",2
-40,"Asian",2
-40,"Black",492
-40,"Hispanic",376
-40,"Other Race",8
-40,"Refused",2
-40,"Unknown",31
-40,"White",9
-41,"Not Known",49
-41,"Black",234
-41,"Hispanic",209
-41,"Other Race",2
-41,"Refused",1
-41,"Unknown",10
-41,"White",7
-42,"Not Known",74
-42,"American Indian",1
-42,"Asian",3
-42,"Black",395
-42,"Hispanic",132
-42,"Other Race",3
-42,"Refused",1
-42,"Unknown",23
-42,"White",21
-43,"Not Known",120
-43,"Asian",10
-43,"Black",347
-43,"Hispanic",242
-43,"Other Race",13
-43,"Refused",2
-43,"Unknown",22
-43,"White",16
-44,"Not Known",133
-44,"American Indian",1
-44,"Asian",7
-44,"Black",529
-44,"Hispanic",376
-44,"Other Race",10
-44,"Refused",9
-44,"Unknown",46
-44,"White",28
-45,"Not Known",27
-45,"Asian",12
-45,"Black",40
-45,"Hispanic",98
-45,"Other Race",1
-45,"Refused",1
-45,"Unknown",12
-45,"White",32
-46,"Not Known",167
-46,"American Indian",1
-46,"Asian",5
-46,"Black",479
-46,"Hispanic",385
-46,"Other Race",27
-46,"Refused",11
-46,"Unknown",22
-46,"White",23
-47,"Not Known",148
-47,"Asian",3
-47,"Black",635
-47,"Hispanic",77
-47,"Other Race",17
-47,"Refused",14
-47,"Unknown",31
-47,"White",19
-48,"Not Known",92
-48,"Asian",5
-48,"Black",257
-48,"Hispanic",243
-48,"Other Race",32
-48,"Refused",4
-48,"Unknown",14
-48,"White",15
-49,"Not Known",46
-49,"Asian",2
-49,"Black",110
-49,"Hispanic",92
-49,"Other Race",10
-49,"Refused",1
-49,"Unknown",10
-49,"White",50
-50,"Not Known",16
-50,"Asian",5
-50,"Black",66
-50,"Hispanic",89
-50,"Other Race",10
-50,"Unknown",7
-50,"White",22
-52,"Not Known",105
-52,"Asian",5
-52,"Black",271
-52,"Hispanic",293
-52,"Other Race",7
-52,"Refused",6
-52,"Unknown",21
-52,"White",51
-60,"Not Known",51
-60,"Black",197
-60,"Hispanic",90
-60,"Other Race",8
-60,"Refused",7
-60,"Unknown",17
-60,"White",115
-61,"Not Known",22
-61,"Asian",5
-61,"Black",55
-61,"Hispanic",27
-61,"Other Race",2
-61,"Refused",3
-61,"Unknown",11
-61,"White",89
-62,"Not Known",16
-62,"Asian",12
-62,"Black",8
-62,"Hispanic",26
-62,"Other Race",17
-62,"White",97
-63,"Not Known",27
-63,"Asian",1
-63,"Black",172
-63,"Hispanic",9
-63,"Other Race",1
-63,"Unknown",13
-63,"White",51
-66,"Not Known",10
-66,"Asian",14
-66,"Black",11
-66,"Hispanic",12
-66,"Other Race",2
-66,"Refused",1
-66,"Unknown",2
-66,"White",37
-67,"Not Known",184
-67,"American Indian",5
-67,"Asian",2
-67,"Black",844
-67,"Hispanic",30
-67,"Other Race",2
-67,"Refused",6
-67,"Unknown",42
-67,"White",4
-68,"Not Known",67
-68,"Asian",17
-68,"Black",6
-68,"Hispanic",33
-68,"Other Race",13
-68,"Refused",4
-68,"Unknown",2
-68,"White",85
-69,"Not Known",51
-69,"American Indian",8
-69,"Asian",7
-69,"Black",308
-69,"Hispanic",15
-69,"Other Race",29
-69,"Refused",1
-69,"Unknown",39
-69,"White",30
-70,"Not Known",123
-70,"American Indian",4
-70,"Asian",12
-70,"Black",411
-70,"Hispanic",53
-70,"Other Race",18
-70,"Refused",7
-70,"Unknown",16
-70,"White",69
-71,"Not Known",122
-71,"Black",455
-71,"Hispanic",15
-71,"Other Race",16
-71,"Unknown",17
-71,"White",23
-72,"Not Known",31
-72,"Asian",4
-72,"Black",36
-72,"Hispanic",117
-72,"Other Race",20
-72,"Unknown",20
-72,"White",23
-73,"Not Known",140
-73,"American Indian",5
-73,"Asian",8
-73,"Black",864
-73,"Hispanic",95
-73,"Other Race",10
-73,"Refused",11
-73,"Unknown",23
-73,"White",7
-75,"Not Known",348
-75,"American Indian",3
-75,"Asian",22
-75,"Black",1349
-75,"Hispanic",297
-75,"Other Race",30
-75,"Refused",9
-75,"Unknown",82
-75,"White",32
-76,"Not Known",26
-76,"Black",61
-76,"Hispanic",41
-76,"Unknown",1
-76,"White",29
-77,"Not Known",151
-77,"American Indian",3
-77,"Asian",1
-77,"Black",718
-77,"Hispanic",21
-77,"Other Race",3
-77,"Refused",3
-77,"Unknown",27
-77,"White",23
-78,"Not Known",27
-78,"Asian",3
-78,"Black",51
-78,"Hispanic",21
-78,"Other Race",4
-78,"Refused",2
-78,"Unknown",2
-78,"White",8
-79,"Not Known",101
-79,"Black",836
-79,"Hispanic",79
-79,"Other Race",2
-79,"Refused",4
-79,"Unknown",23
-79,"White",17
-81,"Not Known",115
-81,"American Indian",1
-81,"Black",583
-81,"Hispanic",42
-81,"Other Race",7
-81,"Refused",6
-81,"Unknown",41
-81,"White",11
-83,"Not Known",87
-83,"American Indian",1
-83,"Asian",1
-83,"Black",249
-83,"Hispanic",240
-83,"Other Race",17
-83,"Refused",2
-83,"Unknown",15
-83,"White",36
-84,"Not Known",49
-84,"Asian",6
-84,"Black",136
-84,"Hispanic",8
-84,"Other Race",9
-84,"Unknown",3
-84,"White",21
-88,"Not Known",30
-88,"Asian",9
-88,"Black",133
-88,"Hispanic",28
-88,"Unknown",13
-88,"White",16
-90,"Not Known",74
-90,"Black",131
-90,"Hispanic",145
-90,"Other Race",17
-90,"Unknown",16
-90,"White",37
-94,"Not Known",26
-94,"Asian",2
-94,"Black",17
-94,"Hispanic",32
-94,"Other Race",1
-94,"Unknown",3
-94,"White",32
-100,"Not Known",17
-100,"Black",63
-100,"Hispanic",18
-100,"Refused",2
-100,"Unknown",2
-100,"White",17
-101,"Not Known",50
-101,"Black",448
-101,"Hispanic",60
-101,"Other Race",14
-101,"Refused",4
-101,"Unknown",8
-101,"White",11
-102,"Not Known",49
-102,"American Indian",2
-102,"Asian",35
-102,"Black",30
-102,"Hispanic",59
-102,"Other Race",12
-102,"Refused",9
-102,"Unknown",14
-102,"White",29
-103,"Not Known",81
-103,"American Indian",9
-103,"Asian",23
-103,"Black",382
-103,"Hispanic",34
-103,"Other Race",5
-103,"Unknown",13
-103,"White",25
-104,"Not Known",18
-104,"Black",27
-104,"Hispanic",64
-104,"Other Race",6
-104,"Refused",2
-104,"Unknown",19
-104,"White",84
-105,"Not Known",65
-105,"American Indian",5
-105,"Asian",14
-105,"Black",294
-105,"Hispanic",36
-105,"Other Race",6
-105,"Refused",12
-105,"Unknown",20
-105,"White",18
-106,"Not Known",76
-106,"Asian",19
-106,"Black",54
-106,"Hispanic",30
-106,"Other Race",10
-106,"Refused",4
-106,"Unknown",5
-106,"White",7
-107,"Not Known",17
-107,"Asian",14
-107,"Black",83
-107,"Hispanic",14
-107,"Other Race",11
-107,"Unknown",6
-107,"White",23
-108,"Not Known",20
-108,"Asian",11
-108,"Black",9
-108,"Hispanic",54
-108,"Unknown",8
-108,"White",29
-109,"Not Known",11
-109,"Asian",29
-109,"Black",50
-109,"Hispanic",61
-109,"Other Race",13
-109,"Unknown",4
-109,"White",37
-110,"Not Known",51
-110,"American Indian",3
-110,"Asian",17
-110,"Black",59
-110,"Hispanic",119
-110,"Other Race",8
-110,"Refused",2
-110,"Unknown",3
-110,"White",5
-111,"Not Known",6
-111,"Asian",3
-111,"Black",4
-111,"Hispanic",6
-111,"Refused",1
-111,"White",17
-112,"Not Known",7
-112,"Asian",7
-112,"Black",11
-112,"Hispanic",13
-112,"Other Race",11
-112,"Unknown",1
-112,"White",69
-113,"Not Known",92
-113,"Asian",2
-113,"Black",555
-113,"Hispanic",19
-113,"Other Race",8
-113,"Refused",6
-113,"Unknown",20
-113,"White",2
-114,"Not Known",58
-114,"Asian",7
-114,"Black",159
-114,"Hispanic",71
-114,"Other Race",12
-114,"Refused",5
-114,"Unknown",11
-114,"White",57
-115,"Not Known",31
-115,"Asian",6
-115,"Black",54
-115,"Hispanic",117
-115,"Other Race",2
-115,"Unknown",4
-115,"White",31
-120,"Not Known",93
-120,"Asian",11
-120,"Black",409
-120,"Hispanic",127
-120,"Other Race",34
-120,"Refused",18
-120,"Unknown",20
-120,"White",132
-121,"Not Known",21
-121,"Asian",7
-121,"Black",177
-121,"Hispanic",67
-121,"Refused",11
-121,"Unknown",17
-121,"White",66
-122,"Not Known",24
-122,"Asian",5
-122,"Black",43
-122,"Hispanic",33
-122,"Other Race",4
-122,"Unknown",11
-122,"White",118
-123,"Not Known",14
-123,"Asian",1
-123,"Black",1
-123,"Hispanic",7
-123,"Other Race",4
-123,"White",85
-1000,"Asian",2
-1000,"White",1
-NA,"Not Known",5
-NA,"Asian",1
-NA,"Black",4
-NA,"Unknown",5
-NA,"White",9
+"precinct","Hispanic","Unknown","Asian","Black","Other Race","Refused","White","American Indian"
+0,2,19,0,0,0,0,0,0
+1,18,19,18,71,6,1,41,0
+5,17,12,23,72,4,2,30,0
+6,31,20,9,60,9,1,45,0
+7,57,35,8,76,4,4,32,5
+9,86,37,1,66,16,5,55,0
+10,37,36,10,100,1,1,56,0
+13,45,9,3,54,9,0,32,0
+14,26,57,10,160,16,0,82,0
+17,4,6,11,22,4,0,29,0
+18,63,54,19,58,13,2,57,2
+19,13,41,1,64,0,1,47,0
+20,25,39,4,19,0,2,23,0
+22,1,2,0,6,0,0,3,0
+23,172,86,0,306,12,8,24,2
+24,47,18,0,103,0,0,37,0
+25,150,60,2,344,23,8,26,1
+26,39,20,3,83,1,0,12,0
+28,20,49,0,251,3,2,19,0
+30,84,56,1,152,9,0,26,0
+32,53,101,5,508,11,0,6,0
+33,117,40,0,82,0,16,17,0
+34,220,73,5,55,8,12,27,0
+40,376,118,2,492,8,2,9,2
+41,209,59,0,234,2,1,7,0
+42,132,97,3,395,3,1,21,1
+43,242,142,10,347,13,2,16,0
+44,376,179,7,529,10,9,28,1
+45,98,39,12,40,1,1,32,0
+46,385,189,5,479,27,11,23,1
+47,77,179,3,635,17,14,19,0
+48,243,106,5,257,32,4,15,0
+49,92,56,2,110,10,1,50,0
+50,89,23,5,66,10,0,22,0
+52,293,126,5,271,7,6,51,0
+60,90,68,0,197,8,7,115,0
+61,27,33,5,55,2,3,89,0
+62,26,16,12,8,17,0,97,0
+63,9,40,1,172,1,0,51,0
+66,12,12,14,11,2,1,37,0
+67,30,226,2,844,2,6,4,5
+68,33,69,17,6,13,4,85,0
+69,15,90,7,308,29,1,30,8
+70,53,139,12,411,18,7,69,4
+71,15,139,0,455,16,0,23,0
+72,117,51,4,36,20,0,23,0
+73,95,163,8,864,10,11,7,5
+75,297,430,22,1349,30,9,32,3
+76,41,27,0,61,0,0,29,0
+77,21,178,1,718,3,3,23,3
+78,21,29,3,51,4,2,8,0
+79,79,124,0,836,2,4,17,0
+81,42,156,0,583,7,6,11,1
+83,240,102,1,249,17,2,36,1
+84,8,52,6,136,9,0,21,0
+88,28,43,9,133,0,0,16,0
+90,145,90,0,131,17,0,37,0
+94,32,29,2,17,1,0,32,0
+100,18,19,0,63,0,2,17,0
+101,60,58,0,448,14,4,11,0
+102,59,63,35,30,12,9,29,2
+103,34,94,23,382,5,0,25,9
+104,64,37,0,27,6,2,84,0
+105,36,85,14,294,6,12,18,5
+106,30,81,19,54,10,4,7,0
+107,14,23,14,83,11,0,23,0
+108,54,28,11,9,0,0,29,0
+109,61,15,29,50,13,0,37,0
+110,119,54,17,59,8,2,5,3
+111,6,6,3,4,0,1,17,0
+112,13,8,7,11,11,0,69,0
+113,19,112,2,555,8,6,2,0
+114,71,69,7,159,12,5,57,0
+115,117,35,6,54,2,0,31,0
+120,127,113,11,409,34,18,132,0
+121,67,38,7,177,0,11,66,0
+122,33,35,5,43,4,0,118,0
+123,7,14,1,1,4,0,85,0
+1000,0,0,2,0,0,0,1,0
+NA,0,10,1,4,0,0,9,0
