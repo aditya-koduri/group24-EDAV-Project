@@ -32,7 +32,7 @@
             font-size: 13px;
         }
   </style>
-  <title>Map of Hong Kong</title>
+  <title>Map of NYC</title>
   <!-- Global Site Tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-62809346-2"></script>
   <script>
@@ -42,15 +42,16 @@
     gtag('config', 'UA-62809346-2');
   </script>
   <!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3.v6.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.js"></script>
 
 <!-- Create an element where the map will take place -->
 </head>
 <body>
-<h3 id="map__text">Select a district on the map ...</h3><br>
+<h3 id="map__text">Select a precinct on the map ...</h3><br>
 
 <div id="graphic" style="float: left; width: 30%">
   <h4 id="map__desc"></h4>
@@ -58,7 +59,7 @@
 
   <div id="btn-zoom">
     <i id="btn-zoom--in" class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-    <i id="btn-zoom--out"class="fa fa-search-minus fa-2x" aria-hidden="true"></i>
+    <i id="btn-zoom--out" class="fa fa-search-minus fa-2x" aria-hidden="true"></i>
   </div>
   <div id="map__container"></div>
 

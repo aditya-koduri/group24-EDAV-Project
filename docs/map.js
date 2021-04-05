@@ -8,7 +8,6 @@ const ZOOM_IN_STEP = 2;
 const ZOOM_OUT_STEP = 1 / ZOOM_IN_STEP;
 const HOVER_COLOR = "#d36f80"
 
-// --------------- Event handler ---------------
 const zoom = d3
   .zoom()
   .scaleExtent(ZOOM_THRESHOLD)
@@ -38,7 +37,6 @@ function clickHandler(d, i) {
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var newArray = d.data2.filter(function (i,el) {
-        // console.log(d.properties.Precinct, parseInt(i.precinct))\
           return parseInt(i.precinct) === d.properties.Precinct ;
         });
     newArray = newArray.sort(function (a, b) {
@@ -57,7 +55,6 @@ function clickHandler(d, i) {
             return d.complainant_ethnicity;
         }));
 
-    //make y axis to show bar names
     var yAxis = d3.axisLeft(y)
         //no tick marks
         .tickSize(0);
@@ -110,9 +107,7 @@ function clickToZoom(zoomStep) {
 d3.select("#btn-zoom--in").on("click", () => clickToZoom(ZOOM_IN_STEP));
 d3.select("#btn-zoom--out").on("click", () => clickToZoom(ZOOM_OUT_STEP));
 
-//  --------------- Step 1 ---------------
 // Prepare SVG container for placing the map,
-// and overlay a transparent rectangle for pan and zoom.
 const svg = d3
   .select("#map__container")
   .append("svg")
@@ -132,16 +127,13 @@ g
   .style("fill", "none")
   .style("pointer-events", "all");
 
-// --------------- Step 2 ---------------
 // Project GeoJSON from 3D to 2D plane, and set
-// projection config.
 const projection = d3
   .geoMercator()
   .center([-74.0438790753783, 40.690195926820898])
   .scale(50000)
   .translate([WIDTH / 4, HEIGHT / 2]);
 
-// --------------- Step 3 ---------------
 // Prepare SVG path and color, import the
 // effect from above projection.
 const length = 1500
@@ -152,10 +144,9 @@ const path = d3.geoPath().projection(projection);
 const color = d3.scaleThreshold()
     .domain([150, 300, 450, 600, 750, 900, 1050, 1200])
     .range(d3.schemeBlues[9])
-// --------------- Step 4 ---------------
-// 1. Plot the map from data source `hongkong`
+// 1. Plot the map from data source `NYC`
 // 2. Place the district name in the map
-var data1 = d3.map();
+var data1 = new Map();
 // const store = {};
 
 var rowConverter = function (d) {
