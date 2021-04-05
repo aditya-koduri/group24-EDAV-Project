@@ -171,7 +171,7 @@ d3.csv()
 
 d3.queue()
   .defer(d3.csv, "https://raw.githubusercontent.com/smarthxg/group24-EDAV-Project/main/data/complaints.csv", function(d) { data1.set(d.precinct, +d.count); })
-  .defer(d3.csv, "https://raw.githubusercontent.com/smarthxg/group24-EDAV-Project/main/data/barchart.csv")
+  .defer(d3.csv, "https://raw.githubusercontent.com/smarthxg/group24-EDAV-Project/main/data/barchart1.csv")
   .await(renderMap);
 
 
