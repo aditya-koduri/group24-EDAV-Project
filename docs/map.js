@@ -146,7 +146,7 @@ const color = d3.scaleThreshold()
     .range(d3.schemeBlues[9])
 // 1. Plot the map from data source `NYC`
 // 2. Place the district name in the map
-var data1 = new Map();
+var data1 = d3.map();
 // const store = {};
 
 var rowConverter = function (d) {
