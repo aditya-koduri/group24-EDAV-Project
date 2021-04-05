@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+
+<!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+            font-family: "Arial", sans-serif;
+        }
+
+        .bar {
+            fill: #5f89ad;
+        }
+
+        .axis {
+            font-size: 13px;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            display: none;
+        }
+
+        .label {
+            font-size: 13px;
+        }
+  </style>
+  <title>Map of Hong Kong</title>
+  <!-- Global Site Tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-62809346-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments) };
+    gtag('js', new Date());
+    gtag('config', 'UA-62809346-2');
+  </script>
+  <!-- Load d3.js -->
+<script src="http://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.js"></script>
+
+<!-- Create an element where the map will take place -->
+</head>
+<body>
+<h3 id="map__text">Select a district on the map ...</h3><br>
+
+<div id="graphic" style="float: left; width: 30%">
+  <h4 id="map__desc"></h4>
+</div>
+
+  <div id="btn-zoom">
+    <i id="btn-zoom--in" class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
+    <i id="btn-zoom--out"class="fa fa-search-minus fa-2x" aria-hidden="true"></i>
+  </div>
+  <div id="map__container"></div>
+
+  <script src="nyc.js"></script>
+  <script src="complaints.js"></script>
+  <script src="map.js"></script>
+</body>
+</html>
