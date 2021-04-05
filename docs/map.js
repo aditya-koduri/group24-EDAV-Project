@@ -1,21 +1,3 @@
-/**
- * SVG structure:
- *   <svg> - container for entire map
- *     <g> - handle zoom and drag position
- *       <rect> - overlay a transparent layer for smooth zoom and drag
- *       <g> of <path> - each `path` is a district in the map
- *       <g> of <text> - districts' name
- *     </g>
- *   </svg>
- *
- * Reference:
- *   http://www.ourd3js.com/wordpress/296/
- *   https://bl.ocks.org/mbostock/4e3925cdc804db257a86fdef3a032a45
- *   https://stackoverflow.com/questions/35443768/how-do-i-fix-zooming-and-panning-in-my-cluster-bundle-graph
- *   https://groups.google.com/forum/#!topic/d3-js/OAJgdKtn1TE
- *   https://groups.google.com/forum/#!topic/d3-js/sg4pnuzWZUU
- */
-
 const WIDTH = window.innerWidth;
 const HEIGHT = window.innerHeight;
 const ZOOM_THRESHOLD = [0.3, 7];
@@ -298,4 +280,13 @@ var svg_bar = d3.select("#graphic").append("svg")
             .append("g")
             .style("margin-top", "10px")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+/**
+ * Reference:
+ *   http://www.ourd3js.com/wordpress/296/
+ *   https://bl.ocks.org/mbostock/4e3925cdc804db257a86fdef3a032a45
+ *   https://stackoverflow.com/questions/35443768/how-do-i-fix-zooming-and-panning-in-my-cluster-bundle-graph
+ *   https://groups.google.com/forum/#!topic/d3-js/OAJgdKtn1TE
+ *   https://groups.google.com/forum/#!topic/d3-js/sg4pnuzWZUU
+ */
 
