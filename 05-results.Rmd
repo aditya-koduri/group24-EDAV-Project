@@ -3,8 +3,13 @@
 ```{r}
 library("tidyverse")
 library(stringr)
+library(lubridate)
+library(plotly)
+
 raw_data = read.csv("~/group24-EDAV-Project/data/allegations.csv")
 raw_data$board_disposition_top = word(raw_data$board_disposition, 1) 
+raw_data$year_month_received <- ymd(with(raw_data, sprintf("%d-%02d-%d", year_received, month_received, 28)))
+
 raw_data <- raw_data%>%
   mutate(complainant_ethnicity=replace(complainant_ethnicity, complainant_ethnicity=="", "Unknown"))
 ```
@@ -231,15 +236,94 @@ ggplot(aes(x = count, y = reorder(allegation, count))) +
 ```
 
 
-## 
+## Time series analysis
+
+```{r}
+
+complaints_by_time <- raw_data %>% 
+  filter(year_received < 2020) %>% 
+  group_by(year_received, fado_type) %>% 
+  summarize(count = n())
+
+
+g <- ggplot(complaints_by_time, aes(year_received, count,  color = fado_type)) + 
+  geom_line()
+
+ggplotly(g)
+```
 
 
 
+```{r}
+
+complaints_by_time <- raw_data %>% 
+  filter(year_received < 2020) %>% 
+  group_by(year_received, mos_ethnicity) %>% 
+  summarize(count = n())
+
+
+g <- ggplot(complaints_by_time, aes(year_received, count,  color = mos_ethnicity)) + 
+  geom_line()
+
+ggplotly(g)
+```
 
 
 
+```{r}
+
+complaints_by_time <- raw_data %>% 
+  filter(year_received < 2020) %>% 
+  group_by(year_received, complainant_ethnicity) %>% 
+  summarize(count = n())
 
 
+g <- ggplot(complaints_by_time, aes(year_received, count,  color = complainant_ethnicity)) + 
+  geom_line()
+
+ggplotly(g)
+```
 
 
+```{r}
 
+complaints_by_time <- raw_data %>% 
+  filter(year_received < 2020) %>% 
+  group_by(year_received, complainant_gender) %>% 
+  summarize(count = n())
+
+
+g <- ggplot(complaints_by_time, aes(year_received, count,  color = complainant_gender)) + 
+  geom_line()
+
+ggplotly(g)
+```
+
+```{r}
+
+complaints_by_time <- raw_data %>% 
+  filter(year_received < 2020) %>% 
+  group_by(year_received, board_disposition_top) %>% 
+  summarize(count = n())
+
+
+g <- ggplot(complaints_by_time, aes(year_received, count,  color = board_disposition_top)) + 
+  geom_line()
+
+ggplotly(g)
+```
+
+
+```{r}
+
+complaints_by_time <- raw_data %>% 
+  filter(year_received < 2020) %>% 
+  group_by(year_received, complainant_ethnicity, board_disposition_top) %>% 
+  summarize(count = n())
+
+
+g <- ggplot(complaints_by_time, aes(year_received, count,  color = complainant_ethnicity)) + 
+  geom_line()
+
+ggplotly(g + facet_grid(board_disposition_top ~ .))
+```

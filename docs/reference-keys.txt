@@ -8,6 +8,6 @@ force
 abuse-of-authority
 discourtesy
 offensive-language
-section
+time-series-analysis
 interactive-component
 conclusion
