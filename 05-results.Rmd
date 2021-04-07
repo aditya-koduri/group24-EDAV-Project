@@ -17,6 +17,8 @@ raw_data <- raw_data%>%
 
 ## Mosaic
 
+### Board Disposition vs Complaint Type
+
 ```{r fig.width=9, fig.height=8}
 library("vcd")
 
@@ -28,6 +30,8 @@ vcd::mosaic(board_disposition_top ~ fado_type, raw_data,
             labeling_args = list(set_varnames = c(fado_type="Type", 
                                                   board_disposition_top="Board Disposition")))
 ```
+
+### Complaint Type vs Complainant Ethnicity
 
 
 ```{r fig.width=9, fig.height=8}
@@ -42,13 +46,39 @@ top_3_complainant_ethnicity_filtered <- raw_data %>%
                       filter(complainant_ethnicity %in% top_3_complainant_ethnicity$complainant_ethnicity)
 
 
+vcd::mosaic(fado_type ~ complainant_ethnicity, top_3_complainant_ethnicity_filtered, 
+            direction = c("v", "h"), 
+            highlighting_fill = c("coral2","grey90", "cornflowerblue", "darkblue"),
+            abbreviate_labs  = c(15, 15),
+            labeling_args = list(set_varnames = c(complainant_ethnicity="Complainant Ethnicity", 
+                                                  board_disposition_top="Board Disposition")))
+```
+
+
+### Board Disposition vs Complainant Ethnicity
+
+
+```{r fig.width=9, fig.height=8}
+
+top_3_complainant_ethnicity <- raw_data %>% 
+        filter(year_received > 2000) %>% 
+        group_by(complainant_ethnicity) %>% 
+        summarize(count=n()) %>% 
+        arrange(desc(count)) %>% 
+        top_n(4)
+
+top_3_complainant_ethnicity_filtered <- raw_data %>% 
+                      filter(complainant_ethnicity %in% top_3_complainant_ethnicity$complainant_ethnicity)
+
+
 vcd::mosaic(board_disposition_top ~ complainant_ethnicity, top_3_complainant_ethnicity_filtered, 
             direction = c("v", "h"), 
             highlighting_fill = c("grey90", "cornflowerblue", "coral2"),
-            rot_labels = c(30, 0),
-            labeling_args = list(set_varnames = c(fado_type="Type", 
+            abbreviate_labs  = c(15, 15),
+            labeling_args = list(set_varnames = c(complainant_ethnicity="Complainant Ethnicity", 
                                                   board_disposition_top="Board Disposition")))
 ```
+### Board Disposition vs Complainant Gender
 
 
 ```{r fig.width=9, fig.height=8}
@@ -66,8 +96,8 @@ top_3_complainant_gender_filtered <- raw_data %>%
 vcd::mosaic(board_disposition_top ~ complainant_gender, top_3_complainant_gender_filtered, 
             direction = c("v", "h"), 
             highlighting_fill = c("grey90", "cornflowerblue", "coral2"),
-            rot_labels = c(30, 0),
-            labeling_args = list(set_varnames = c(fado_type="Type", 
+            abbreviate_labs  = c(15, 15),
+            labeling_args = list(set_varnames = c(complainant_gender="Complainant Gender", 
                                                   board_disposition_top="Board Disposition")))
 ```
 
@@ -87,8 +117,8 @@ top_3_mos_ethnicity_filtered <- raw_data %>%
 vcd::mosaic(board_disposition_top ~ mos_ethnicity, top_3_mos_ethnicity_filtered, 
             direction = c("v", "h"), 
             highlighting_fill = c("grey90", "cornflowerblue", "coral2"),
-            rot_labels = c(30, 0),
-            labeling_args = list(set_varnames = c(fado_type="Type", 
+            abbreviate_labs  = c(15, 15),
+            labeling_args = list(set_varnames = c(mos_ethnicity="Officer's Ethinicity ", 
                                                   board_disposition_top="Board Disposition")))
 
 top_3_mos_ethnicity_filtered <- raw_data %>% 
@@ -97,49 +127,61 @@ top_3_mos_ethnicity_filtered <- raw_data %>%
                       summarize(count=n())
 
 p <- ggplot(top_3_mos_ethnicity_filtered, aes(x = mos_ethnicity, y = count))+
-  geom_col(aes(fill = board_disposition_top), width = 0.7)
+  geom_col(aes(fill = board_disposition_top), width = 0.7)+ 
+  xlab("Officer's Ethinicity") + 
+  ylab("Case Count") + 
+  guides(fill=guide_legend(title="Board Disposition"))
 p
 ```
 
 
-
-```{r fig.width=9, fig.height=8}
-
-vcd::mosaic(board_disposition_top ~ rank_incident , top_3_complainant_gender_filtered, 
-            direction = c("v", "h"), 
-            highlighting_fill = c("grey90", "cornflowerblue", "coral2"),
-            rot_labels = c(30, 0),
-            labeling_args = list(set_varnames = c(ra="Type", 
-                                                  board_disposition_top="Board Disposition")))
-```
-
 ```{r}
+
+
+
 count_by_individual <- raw_data %>% 
+  filter(mos_ethnicity %in% top_3_mos_ethnicity$mos_ethnicity) %>% 
   group_by(unique_mos_id, first_name, last_name, rank_now, mos_ethnicity, mos_gender) %>% 
   summarize(count=n())
 
 
-p <- ggplot(count_by_individual, aes(x = mos_ethnicity, y = count))+ 
+p <- ggplot(count_by_individual, aes(x = fct_reorder(mos_ethnicity, count, median), y = count))+ 
   geom_boxplot() +
   coord_flip() +
-  xlab("") +
-  theme_grey(16) 
+  ylab("No of Cases per Officer") +
+  xlab("Officer's Ethinicity") +
+  theme_minimal() 
 
 p
 ```
 
-
 ```{r}
+library(forcats)
+p <- ggplot(count_by_individual, aes(x = fct_reorder(rank_now, count, median), y = count))+ 
+  geom_boxplot() +
+  coord_flip() +
+  ylab("No of Cases per Officer") +
+  xlab("Officer's Ethinicity") +
+  theme_gray() 
+
+p
+
+```
+
+
+```{r fig.width=7, fig.height=6}
 
 count_by_individual <- raw_data %>% 
+  filter(mos_ethnicity %in% top_3_mos_ethnicity$mos_ethnicity) %>% 
   group_by(unique_mos_id, first_name, last_name, rank_now, mos_ethnicity, mos_gender, board_disposition_top) %>% 
   summarize(count=n())
 
 
-p <- ggplot(count_by_individual, aes(x = mos_ethnicity, y = count))+ 
+p <- ggplot(count_by_individual, aes(x = fct_reorder(mos_ethnicity, count, median), y = count))+ 
   geom_boxplot() +
   coord_flip() +
-  xlab("question short name") +
+  ylab("No of Cases per Officer") +
+  xlab("Officer's Ethinicity") +
   theme_grey(16) 
 
 p + facet_grid(board_disposition_top ~ .)
@@ -247,7 +289,10 @@ complaints_by_time <- raw_data %>%
 
 
 g <- ggplot(complaints_by_time, aes(year_received, count,  color = fado_type)) + 
-  geom_line()
+  geom_line() +
+  xlab("Year") +
+  ylab("No of Cases Received")+ 
+  guides(color=guide_legend(title="Complaint Type"))
 
 ggplotly(g)
 ```
@@ -263,7 +308,10 @@ complaints_by_time <- raw_data %>%
 
 
 g <- ggplot(complaints_by_time, aes(year_received, count,  color = mos_ethnicity)) + 
-  geom_line()
+  geom_line() +
+  xlab("Year") +
+  ylab("No of Cases Received")+ 
+  guides(color=guide_legend(title="Officer Ethnicity"))
 
 ggplotly(g)
 ```
@@ -279,7 +327,10 @@ complaints_by_time <- raw_data %>%
 
 
 g <- ggplot(complaints_by_time, aes(year_received, count,  color = complainant_ethnicity)) + 
-  geom_line()
+  geom_line() +
+  xlab("Year") +
+  ylab("No of Cases Received")+ 
+  guides(color=guide_legend(title="Complainant Ethnicity"))
 
 ggplotly(g)
 ```
@@ -289,12 +340,16 @@ ggplotly(g)
 
 complaints_by_time <- raw_data %>% 
   filter(year_received < 2020) %>% 
+  filter(complainant_gender %in% top_3_complainant_gender$complainant_gender) %>% 
   group_by(year_received, complainant_gender) %>% 
   summarize(count = n())
 
 
 g <- ggplot(complaints_by_time, aes(year_received, count,  color = complainant_gender)) + 
-  geom_line()
+  geom_line() +
+  xlab("Year") +
+  ylab("No of Cases Received")+ 
+  guides(color=guide_legend(title="Complaint Gender"))
 
 ggplotly(g)
 ```
@@ -308,7 +363,10 @@ complaints_by_time <- raw_data %>%
 
 
 g <- ggplot(complaints_by_time, aes(year_received, count,  color = board_disposition_top)) + 
-  geom_line()
+  geom_line() +
+  xlab("Year") +
+  ylab("No of Cases Received")+ 
+  guides(color=guide_legend(title="Board Disposition"))
 
 ggplotly(g)
 ```
@@ -317,13 +375,32 @@ ggplotly(g)
 ```{r}
 
 complaints_by_time <- raw_data %>% 
-  filter(year_received < 2020) %>% 
+  filter(year_received < 2020, year_received > 1995) %>% 
   group_by(year_received, complainant_ethnicity, board_disposition_top) %>% 
   summarize(count = n())
 
 
 g <- ggplot(complaints_by_time, aes(year_received, count,  color = complainant_ethnicity)) + 
-  geom_line()
+  geom_line() +
+  xlab("Year") +
+  ylab("No of Cases Received")+ 
+  guides(color=guide_legend(title="Complainant Ethnicity"))
+
+ggplotly(g + facet_grid(board_disposition_top ~ .))
+```
+
+```{r}
+complaints_by_time <- raw_data %>% 
+  filter(year_closed > 1995) %>%
+  group_by(year_closed, complainant_ethnicity, board_disposition_top) %>% 
+  summarize(count = n())
+
+
+g <- ggplot(complaints_by_time, aes(year_closed, count,  color = complainant_ethnicity)) + 
+  geom_line() +
+  xlab("Year") +
+  ylab("No of Cases Received")+ 
+  guides(color=guide_legend(title="Complainant Ethnicity"))
 
 ggplotly(g + facet_grid(board_disposition_top ~ .))
 ```

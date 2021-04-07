@@ -4,6 +4,9 @@ data-transformation
 missing-values
 results
 mosaic
+board-disposition-vs-complaint-type
+complaint-type-vs-complainant-ethnicity
+board-disposition-vs-complainant-ethnicity
 force
 abuse-of-authority
 discourtesy
