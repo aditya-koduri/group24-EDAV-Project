@@ -1,19 +1,145 @@
 # Results
 
 ```{r}
-raw_data = read.csv("~/group24-EDAV-Project/data/allegations.csv")
 library("tidyverse")
+library(stringr)
+raw_data = read.csv("~/group24-EDAV-Project/data/allegations.csv")
+raw_data$board_disposition_top = word(raw_data$board_disposition, 1) 
+raw_data <- raw_data%>%
+  mutate(complainant_ethnicity=replace(complainant_ethnicity, complainant_ethnicity=="", "Unknown"))
+```
+
+
+## Mosaic
+
+```{r fig.width=9, fig.height=8}
+library("vcd")
+
+
+vcd::mosaic(board_disposition_top ~ fado_type, raw_data, 
+            direction = c("v", "h"), 
+            highlighting_fill = c("grey90", "cornflowerblue", "coral2"),
+            abbreviate_labs  = c(15, 15),
+            labeling_args = list(set_varnames = c(fado_type="Type", 
+                                                  board_disposition_top="Board Disposition")))
+```
+
+
+```{r fig.width=9, fig.height=8}
+
+top_3_complainant_ethnicity <- raw_data %>% 
+        group_by(complainant_ethnicity) %>% 
+        summarize(count=n()) %>% 
+        arrange(desc(count)) %>% 
+        top_n(4)
+
+top_3_complainant_ethnicity_filtered <- raw_data %>% 
+                      filter(complainant_ethnicity %in% top_3_complainant_ethnicity$complainant_ethnicity)
+
+
+vcd::mosaic(board_disposition_top ~ complainant_ethnicity, top_3_complainant_ethnicity_filtered, 
+            direction = c("v", "h"), 
+            highlighting_fill = c("grey90", "cornflowerblue", "coral2"),
+            rot_labels = c(30, 0),
+            labeling_args = list(set_varnames = c(fado_type="Type", 
+                                                  board_disposition_top="Board Disposition")))
+```
+
+
+```{r fig.width=9, fig.height=8}
+
+top_3_complainant_gender <- raw_data %>% 
+        group_by(complainant_gender) %>% 
+        summarize(count=n()) %>% 
+        arrange(desc(count)) %>% 
+        top_n(2)
+
+top_3_complainant_gender_filtered <- raw_data %>% 
+                      filter(complainant_gender %in% top_3_complainant_gender$complainant_gender)
+
+
+vcd::mosaic(board_disposition_top ~ complainant_gender, top_3_complainant_gender_filtered, 
+            direction = c("v", "h"), 
+            highlighting_fill = c("grey90", "cornflowerblue", "coral2"),
+            rot_labels = c(30, 0),
+            labeling_args = list(set_varnames = c(fado_type="Type", 
+                                                  board_disposition_top="Board Disposition")))
+```
+
+
+```{r fig.width=9, fig.height=8}
+
+top_3_mos_ethnicity <- raw_data %>% 
+        group_by(mos_ethnicity) %>% 
+        summarize(count=n()) %>% 
+        arrange(desc(count)) %>% 
+        top_n(4)
+
+top_3_mos_ethnicity_filtered <- raw_data %>% 
+                      filter(mos_ethnicity %in% top_3_mos_ethnicity$mos_ethnicity) 
+
+
+vcd::mosaic(board_disposition_top ~ mos_ethnicity, top_3_mos_ethnicity_filtered, 
+            direction = c("v", "h"), 
+            highlighting_fill = c("grey90", "cornflowerblue", "coral2"),
+            rot_labels = c(30, 0),
+            labeling_args = list(set_varnames = c(fado_type="Type", 
+                                                  board_disposition_top="Board Disposition")))
+
+top_3_mos_ethnicity_filtered <- raw_data %>% 
+                      filter(mos_ethnicity %in% top_3_mos_ethnicity$mos_ethnicity) %>% 
+                      group_by(mos_ethnicity, board_disposition_top) %>% 
+                      summarize(count=n())
+
+p <- ggplot(top_3_mos_ethnicity_filtered, aes(x = mos_ethnicity, y = count))+
+  geom_col(aes(fill = board_disposition_top), width = 0.7)
+p
+```
+
+
+
+```{r fig.width=9, fig.height=8}
+
+vcd::mosaic(board_disposition_top ~ rank_incident , top_3_complainant_gender_filtered, 
+            direction = c("v", "h"), 
+            highlighting_fill = c("grey90", "cornflowerblue", "coral2"),
+            rot_labels = c(30, 0),
+            labeling_args = list(set_varnames = c(ra="Type", 
+                                                  board_disposition_top="Board Disposition")))
+```
+
+```{r}
+count_by_individual <- raw_data %>% 
+  group_by(unique_mos_id, first_name, last_name, rank_now, mos_ethnicity, mos_gender) %>% 
+  summarize(count=n())
+
+
+p <- ggplot(count_by_individual, aes(x = mos_ethnicity, y = count))+ 
+  geom_boxplot() +
+  coord_flip() +
+  xlab("") +
+  theme_grey(16) 
+
+p
 ```
 
 
 ```{r}
-count_by_allegation <- raw_data %>% 
-  group_by(fado_type, allegation) %>% 
-  summarise(count = n()) %>% 
-  arrange(desc(count))
+
+count_by_individual <- raw_data %>% 
+  group_by(unique_mos_id, first_name, last_name, rank_now, mos_ethnicity, mos_gender, board_disposition_top) %>% 
+  summarize(count=n())
+
+
+p <- ggplot(count_by_individual, aes(x = mos_ethnicity, y = count))+ 
+  geom_boxplot() +
+  coord_flip() +
+  xlab("question short name") +
+  theme_grey(16) 
+
+p + facet_grid(board_disposition_top ~ .)
+
 ```
-
-
 
 ```{r}
 #Cleaveland Dot Plot Theme
@@ -26,6 +152,94 @@ theme_dotplot <- theme_bw(14) +
         panel.grid.major.y = element_line(size = 0.5),
         panel.grid.minor.x = element_blank())
 ```
+
+```{r}
+count_by_allegation <- raw_data %>% 
+  group_by(fado_type, allegation) %>% 
+  summarise(count = n(), .groups="drop") %>% 
+  arrange(desc(count))
+```
+
+## Force
+
+An officer used excessive or otherwise unnecessary force.
+
+```{r fig.width=7, fig.height=6}
+# create the plot
+count_by_allegation %>% 
+  filter(fado_type == "Force") %>% 
+ggplot(aes(x = count, y = reorder(allegation, count))) +
+  geom_point(color = "blue") +
+  scale_x_continuous(limits = c(0, 5000)) +
+  theme_dotplot +
+  xlab("No of Allegations Made ") +
+  ylab("Allegation\n") +
+  ggtitle("Force")
+```
+
+A total of {}
+
+## Abuse of Authority 
+
+An officer used police powers to take unwarranted actions, such as an unlawful search.
+
+```{r fig.width=7, fig.height=8}
+# create the plot
+count_by_allegation %>% 
+  filter(fado_type == "Abuse of Authority") %>% 
+ggplot(aes(x = count, y = reorder(allegation, count))) +
+  geom_point(color = "blue") +
+  scale_x_continuous(limits = c(0, 2500)) +
+  theme_dotplot +
+  xlab("No of Allegations Made") +
+  ylab("Allegations\n") +
+  ggtitle("Abuse of Authority")
+```
+
+
+## Discourtesy
+
+An officer engaged in rude or profane behavior toward a civilian.
+```{r fig.width=7, fig.height=3}
+# create the plot
+count_by_allegation %>% 
+  filter(fado_type == "Discourtesy") %>% 
+ggplot(aes(x = count, y = reorder(allegation, count))) +
+  geom_point(color = "blue") +
+  scale_x_continuous(limits = c(0, 4000)) +
+  theme_dotplot +
+  xlab("No of Allegations Made") +
+  ylab("Allegations\n") +
+  ggtitle("Discourtesy")
+```
+
+## Offensive Language
+
+An officer used one or more slurs relating to race, ethnicity, gender, religion, sexual orientation or disability.
+
+```{r fig.width=7, fig.height=4}
+# create the plot
+count_by_allegation %>% 
+  filter(fado_type == "Offensive Language") %>% 
+ggplot(aes(x = count, y = reorder(allegation, count))) +
+  geom_point(color = "blue") +
+  scale_x_continuous(limits = c(0, 400)) +
+  theme_dotplot +
+  xlab("No of Allegations Made") +
+  ylab("Allegations\n") +
+  ggtitle("Offensive Language")
+```
+
+
+## 
+
+
+
+
+
+
+
+
 
 
 

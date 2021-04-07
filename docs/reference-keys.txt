@@ -3,5 +3,11 @@ data-sources
 data-transformation
 missing-values
 results
+mosaic
+force
+abuse-of-authority
+discourtesy
+offensive-language
+section
 interactive-component
 conclusion

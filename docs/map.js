@@ -156,7 +156,6 @@ var rowConverter = function (d) {
     count: +d.count,
     }
 };
-// renderMap();
 
 d3.csv()
 
@@ -167,7 +166,6 @@ d3.queue()
 
 
 function renderMap(error, data, data2) {
-    // Draw districts and register event listeners
     // Legend
     g
         .append("g")
@@ -204,56 +202,7 @@ function renderMap(error, data, data2) {
         .on("mouseout", mouseOutHandler)
         .on("click", clickHandler);
 
-    // Place name labels in the middle of a district
-    // Introduce some offset (dy, dx) to adjust the position
-    g
-        .append("g")
-        .selectAll("text")
-        .data(nyc.features)
-        .enter()
-        .append("text")
-        .attr("transform", d => `translate(${path.centroid(d)})`)
-        .attr("text-anchor", "middle")
-        .attr("font-size", 10)
-        .attr("dx", d => _.get(d, "offset[0]", null))
-        .attr("dy", d => _.get(d, "offset[1]", null))
-
 }
-
-
-var data = [{
-                "name": "Apples",
-                "value": 20,
-        },
-            {
-                "name": "Bananas",
-                "value": 12,
-        },
-            {
-                "name": "Grapes",
-                "value": 19,
-        },
-            {
-                "name": "Lemons",
-                "value": 5,
-        },
-            {
-                "name": "Limes",
-                "value": 16,
-        },
-            {
-                "name": "Oranges",
-                "value": 26,
-        },
-            {
-                "name": "Pears",
-                "value": 30,
-        }];
-
-        //sort bars based on value
-        data = data.sort(function (a, b) {
-            return d3.ascending(a.value, b.value);
-        })
 
 var margin = {
             top: 15,
